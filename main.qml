@@ -1,19 +1,23 @@
 import QtQuick 2.15
 import QtQuick.Window 2.15
+import App 1.0
+
 
 Window {
     width: 300
     height: 200
     visible: true
     title: "Phase-1"
-
+    Backend{
+        id:backend
+    }
     Column {
         anchors.centerIn: parent
         spacing: 20
 
         Text {
             //counter 从外部引入
-            text: "Count: " + counter.value
+            text: "Count: " + backend.value
             font.pixelSize: 24
         }
 
@@ -31,7 +35,7 @@ Window {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: counter.increment()
+                onClicked: backend.increment()
             }
         }
     }

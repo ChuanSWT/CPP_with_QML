@@ -25,10 +25,14 @@ int main(int argc, char *argv[])
         },
         Qt::QueuedConnection);
     /*开始写逻辑*/
+    //使用qmlRegisterType
+    //一个模板参数:传入的c++类
+    //四个参数：模块名，自定版本号1,自定版本号2,类型名
+    qmlRegisterType<Counter>("App", 1, 0, "Backend");
     //自定义类
-    Counter counter;
+    //Counter counter;
     //engine.rootContext()是“注册点”
-    engine.rootContext()->setContextProperty("counter", &counter);
+    //engine.rootContext()->setContextProperty("counter", &counter);
     //加载窗口
     engine.load(url);
 

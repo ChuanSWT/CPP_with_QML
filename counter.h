@@ -14,15 +14,15 @@ class Counter : public QObject
     // 当 emit valueChanged() 时，QML 会重新计算所有依赖 value 的绑定
     Q_PROPERTY(int value READ MyGetValue NOTIFY valueChanged)
 
-public:
-    explicit Counter(QObject *parent = nullptr)
+    public:
+        explicit Counter(QObject *parent = nullptr)
         : QObject(parent), m_value(0) {}
 
     int MyGetValue() const { return m_value; }
 
     //Q_INVOKABLE：使得qml可以访问这个方法
     Q_INVOKABLE void increment() {
-        m_value++;
+        ++m_value;
         emit valueChanged();
     }
 
