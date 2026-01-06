@@ -14,12 +14,18 @@ Window {
     Column {
         anchors.centerIn: parent
         spacing: 20
-
-        Text {
-            //counter 从外部引入
-            text: "Count: " + backend.value
-            font.pixelSize: 24
+        Row{
+            spacing:20
+            Text {
+                text: "Count: " + backend.value
+                font.pixelSize: 24
+            }
+            Text {
+                text: "Count: " + backend.multi_thread_value
+                font.pixelSize: 24
+            }
         }
+
 
         Rectangle {
             width: 120
@@ -35,7 +41,10 @@ Window {
 
             MouseArea {
                 anchors.fill: parent
-                onClicked: backend.increment()
+                onClicked: {
+                    backend.increment()
+                    backend.multiThreadValueIncrement()
+                }
             }
         }
     }

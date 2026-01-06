@@ -1,0 +1,18 @@
+#ifndef WORKER_H
+#define WORKER_H
+
+#include <QObject>
+#include <QThread>
+class Worker : public QObject
+{
+    Q_OBJECT
+public:
+    explicit Worker(QObject *parent = nullptr);
+public slots:
+    void doWork();
+signals:
+    void progress(int percent);
+    void finished();
+};
+
+#endif // WORKER_H
